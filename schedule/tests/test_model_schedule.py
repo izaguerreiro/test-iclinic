@@ -1,11 +1,11 @@
-""" Test model file """
+""" Test model Schedule """
 
 from datetime import datetime
 from django.test import TestCase
 from schedule.models import Schedule
 
 
-class ScheduleModelTest(TestCase):
+class TestScheduleModel(TestCase):
     """ Class to test schedule model """
     def setUp(self):
         self.date = datetime.now().date()
@@ -31,7 +31,7 @@ class ScheduleModelTest(TestCase):
     def test_end_time(self):
         """ Checks if end time is correct """
         self.assertEqual(self.time, self.schedule.end_time)
-    
+
     def test_patient(self):
         """ Checks if patient is correct """
         self.assertEqual('Izabela Guerreiro', self.schedule.patient)
