@@ -1,6 +1,8 @@
 # test-iclinic
 Desafio realizado para a vaga de Desenvolvedor Python.
 
+[![Build Status](https://travis-ci.org/izaguerreiro/test-iclinic.svg?branch=master)](https://travis-ci.org/izaguerreiro/test-iclinic)
+
 ### Como executar?
 
 * Faça download ou clone o repositório
