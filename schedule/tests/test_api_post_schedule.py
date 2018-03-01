@@ -3,6 +3,8 @@
 from json import dumps
 from django.test import TestCase
 
+from schedule.models import Schedule
+
 
 class TestPostSchedule(TestCase):
     """ Test post schedule """
@@ -25,3 +27,7 @@ class TestPostSchedule(TestCase):
     def test_response_content_type(self):
         """ Check the submitted content type """
         self.assertEqual('application/json', self.response.get('Content-Type'))
+
+    def test_schedule_created(self):
+        """ Check if object has created """
+        self.assertTrue(Schedule.objects.exists())
