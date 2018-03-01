@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from schedule.models import Schedule
 from schedule.serializer import ScheduleSerializer
+from schedule.decorators import validate_date_time_exists
 
 
 class ScheduleList(APIView):
@@ -15,6 +16,7 @@ class ScheduleList(APIView):
         serializer = ScheduleSerializer(Schedule.objects.all(), many=True)
         return Response(serializer.data)
 
+    @validate_date_time_exists
     def post(self, request, format=None):
         """ Create a new schedule """
         serializer = ScheduleSerializer(data=request.data)
@@ -40,6 +42,7 @@ class ScheduleDetail(APIView):
         serializer = ScheduleSerializer(schedule)
         return Response(serializer.data)
 
+    @validate_date_time_exists
     def put(self, request, pk, format=None):
         """ Update a schedule """
         schedule = self.get_object(pk)
