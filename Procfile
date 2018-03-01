@@ -1,0 +1,1 @@
+web: gunicorn iclinic.wsgi --log-file -
