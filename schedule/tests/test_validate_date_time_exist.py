@@ -1,17 +1,18 @@
-""" Test post in API """
+""" Test validate data and time exists """
 
 from json import dumps
 from django.test import TestCase
-from schedule.models import Schedule
 
 
-class TestPostSchedule(TestCase):
-    """ Test post schedule """
+class TestValidateDateTime(TestCase):
+    """ Test validate date and time exists """
+
+    fixtures = ['schedule.json']
 
     def setUp(self):
         data = {
-            'date': '2018-02-28', 'start_time': '10:00:00',
-            'end_time': '11:00:00', 'patient': 'Izabela Guerreiro',
+            'date': '2018-02-28', 'start_time': '21:28:43',
+            'end_time': '21:28:44', 'patient': 'Izabela Guerreiro',
             'procedure': 'Consulta de rotina'
         }
         self.response = self.client.post(
@@ -21,12 +22,8 @@ class TestPostSchedule(TestCase):
 
     def test_status_code(self):
         """ Check request status """
-        self.assertEqual(201, self.response.status_code)
+        self.assertEqual(400, self.response.status_code)
 
     def test_response_content_type(self):
         """ Check the submitted content type """
         self.assertEqual('application/json', self.response.get('Content-Type'))
-
-    def test_schedule_created(self):
-        """ Check if object has created """
-        self.assertTrue(Schedule.objects.exists())
