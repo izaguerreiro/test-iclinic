@@ -1,0 +1,11 @@
+[{
+    "model": "schedule.schedule",
+    "pk": 1,
+    "fields": {
+        "date": "2018-02-28",
+        "start_time": "21:28:43",
+        "end_time": "21:28:44",
+        "patient": "Izabela Guerreiro",
+        "procedure": "Consulta de rotina"
+    }
+}]
