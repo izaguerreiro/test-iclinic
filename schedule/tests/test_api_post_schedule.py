@@ -2,7 +2,6 @@
 
 from json import dumps
 from django.test import TestCase
-
 from schedule.models import Schedule
 
 
