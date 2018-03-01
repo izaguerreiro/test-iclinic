@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from schedule.views import ScheduleList, ScheduleDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/schedules/', ScheduleList.as_view(), name='list'),
+    path('api/schedules/<int:pk>/', ScheduleDetail.as_view(), name='details'),
 ]
