@@ -9,10 +9,12 @@ from schedule.models import Schedule
 def validate_date_time_exists(func):
     """ Decorator to validate date and time already exist """
     def validate(self, request, **kwargs):
+        start = request.data['start_time']
+        end = request.data['end_time']
         date_exists = Schedule.objects.filter(
             Q(date=request.data['date']),
-            Q(start_time__gte=request.data['start_time']),
-            Q(end_time__lte=request.data['end_time'])
+            Q(start_time__range=(start, end)) |
+            Q(end_time__range=(start, end))
         ).exists()
 
         if date_exists:
