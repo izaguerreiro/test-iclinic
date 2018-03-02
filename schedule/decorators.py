@@ -14,9 +14,10 @@ def validate_date_time_exists(func):
             Q(start_time__gte=request.data['start_time']),
             Q(end_time__lte=request.data['end_time'])
         ).exists()
-        
+
         if date_exists:
             return Response(
-                'Data e hora indisponíveis', status=status.HTTP_400_BAD_REQUEST)
+                'Data e hora indisponíveis', status=status.HTTP_400_BAD_REQUEST
+            )
         return func(self, request, **kwargs)
     return validate
